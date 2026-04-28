@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Detail Acara — Fahmi & Cantika</title>
+  <meta name="description" content="Informasi akad nikah, resepsi, dan peta lokasi pernikahan  & Ararya." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: { "on-error": "#ffffff", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "primary-fixed": "#ffdad2", "on-tertiary": "#ffffff", "on-secondary-fixed": "#261900", "on-tertiary-fixed": "#2b160f", "secondary": "#775a19", "on-tertiary-container": "#c09d91", "primary-container": "#4e342e", "outline": "#827471", "on-secondary-container": "#785a1a", "surface-container-high": "#eae8e4", "surface-variant": "#e4e2de", "inverse-primary": "#e5beb5", "tertiary-container": "#4e352c", "surface": "#fbf9f5", "background": "#fbf9f5", "on-primary-fixed-variant": "#5c403a", "on-background": "#1b1c1a", "on-primary-container": "#c19c94", "on-secondary": "#ffffff", "surface-container": "#efeeea", "primary": "#361f1a", "on-error-container": "#93000a", "surface-container-highest": "#e4e2de", "on-primary": "#ffffff", "on-surface-variant": "#504442", "outline-variant": "#d4c3bf", "surface-container-low": "#f5f3ef", "inverse-surface": "#30312e", "surface-bright": "#fbf9f5", "secondary-fixed": "#ffdea5", "secondary-container": "#fed488", "secondary-fixed-dim": "#e9c176", "on-secondary-fixed-variant": "#5d4201", "surface-dim": "#dbdad6", "surface-tint": "#755750", "inverse-on-surface": "#f2f0ed", "on-primary-fixed": "#2b1611", "tertiary-fixed-dim": "#e4beb2", "error": "#ba1a1a", "tertiary": "#352017", "on-tertiary-fixed-variant": "#5b4137", "on-surface": "#1b1c1a", "primary-fixed-dim": "#e5beb5", "tertiary-fixed": "#ffdbce" },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          spacing: { "section-gap": "80px", "gutter": "16px", "unit": "8px", "margin-page": "32px" },
+          fontFamily: { "display-lg": ["Noto Serif"], "title-sm": ["Noto Serif"], "label-caps": ["Work Sans"], "headline-md": ["Noto Serif"], "body-md": ["Work Sans"] },
+          fontSize: { "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }], "title-sm": ["20px", { lineHeight: "1.4", letterSpacing: "0.05em", fontWeight: "500" }], "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.2em", fontWeight: "600" }], "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }], "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }] }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-surface text-on-background font-body-md selection:bg-secondary-container"
+  style="opacity:0;transition:opacity 0.4s ease;">
+
+  <header class="top-header">
+    <div class="top-header-inner">
+      <a href="index.html" onclick="navigateTo('index.html',event)" class="header-icon"><span
+          class="material-symbols-outlined">park</span></a>
+      <h1>Fahmi & Cantika</h1>
+      <span class="material-symbols-outlined header-icon">music_note</span>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto pb-32 ukiran-pattern min-h-screen">
+
+    <!-- Hero -->
+    <section class="px-margin-page pt-12 pb-8 text-center reveal">
+      <div class="inline-block px-4 py-1 border-b border-secondary/30 mb-4">
+        <p class="font-label-caps text-label-caps text-secondary uppercase">The Holy Union</p>
+      </div>
+      <h2 class="font-display-lg text-display-lg text-primary mb-4">Detail Acara</h2>
+      <div class="flex justify-center items-center gap-4 opacity-30">
+        <div class="h-[1px] w-12 bg-secondary"></div>
+        <span class="material-symbols-outlined text-secondary">settings_ethernet</span>
+        <div class="h-[1px] w-12 bg-secondary"></div>
+      </div>
+    </section>
+
+    <!-- Live Countdown -->
+    <section class="px-margin-page mb-section-gap reveal-scale">
+      <div
+        class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
+          style="background-image:radial-gradient(circle at 2px 2px,#775a19 1px,transparent 0);background-size:24px 24px;">
+        </div>
+        <p class="font-label-caps text-label-caps text-secondary mb-6 tracking-[0.3em]">MENGHITUNG HARI</p>
+        <div id="countdown" class="countdown-grid"></div>
+      </div>
+    </section>
+
+    <!-- Akad Nikah -->
+    <section class="px-margin-page mb-12 reveal">
+      <div class="relative group">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-secondary/10 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+        </div>
+        <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden">
+          <div class="h-2 bg-secondary"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="material-symbols-outlined text-secondary text-3xl">auto_awesome</span>
+              <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest">Akad Nikah</h3>
+            </div>
+            <div class="space-y-6 reveal-stagger">
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">calendar_month</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">HARI & TANGGAL</p>
+                  <p class="font-title-sm text-on-surface">Sabtu, 2 Mei 2026</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">schedule</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">WAKTU</p>
+                  <p class="font-title-sm text-on-surface">08:00 — 10:00 WIB</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">location_on</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">LOKASI</p>
+                  <p class="font-title-sm text-on-surface">Stadion Utama Gelora Bung Karno</p>
+                  <p class="font-body-md text-on-surface-variant text-sm mt-1">Jl. Pintu Satu Senayan, RT.1/RW.3,
+                    Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separator -->
+    <div class="flex justify-center my-12 opacity-20 reveal">
+      <div class="flex gap-4 items-center">
+        <span class="material-symbols-outlined text-secondary text-4xl">filter_vintage</span>
+        <div class="w-32 h-[1px] bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
+        <span class="material-symbols-outlined text-secondary text-4xl">filter_vintage</span>
+      </div>
+    </div>
+
+    <!-- Resepsi -->
+    <section class="px-margin-page mb-section-gap reveal">
+      <div class="relative group">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-secondary/10 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
+        </div>
+        <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden">
+          <div class="h-2 bg-primary"></div>
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="material-symbols-outlined text-secondary text-3xl">celebration</span>
+              <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest">Resepsi</h3>
+            </div>
+            <div class="space-y-6 reveal-stagger">
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">calendar_month</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">HARI & TANGGAL</p>
+                  <p class="font-title-sm text-on-surface">Sabtu, 2 Mei 2026</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">schedule</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">WAKTU</p>
+                  <p class="font-title-sm text-on-surface">11:00 — 14:00 WIB</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="material-symbols-outlined text-secondary/70">location_on</span>
+                <div>
+                  <p class="font-label-caps text-label-caps text-secondary mb-1">LOKASI</p>
+                  <p class="font-title-sm text-on-surface">Patra Semarang Hotel & Convention</p>
+                  <p class="font-body-md text-on-surface-variant text-sm mt-1">Grand Rama Shinta Ballroom, Jl.
+                    Sisingamangaraja, Semarang</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section class="px-margin-page mb-section-gap reveal">
+      <h3 class="font-headline-md text-title-sm text-primary text-center mb-8 uppercase tracking-[0.2em]">Peta Lokasi
+      </h3>
+      <div class="rounded-xl overflow-hidden border border-outline-variant/50 shadow-sm mb-6 aspect-video relative">
+        <img class="w-full h-full object-cover" alt="Peta Lokasi Semarang"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIt2oU-MutNJMVe59odk0DE5HSijOrwhXAk1CciUQcKA7y-LX_3DhaOvgPErl1FKzdZTP-xc333DOjSeF63lgGvrN0bP2cBh8f0_nEHugGe2yfNGbceEIRRE8-znK2O6IEXqMFAWT2Dfo1gaiA44VXlQSnJEaeoU7Ms8xU45Vs1o3I5JpTwXSaPCg2lhZ7gkst3zR3KbIhWxHaUifc3_pP2KzhmFlxfslEk88GgZeIGkxurd3EFiTwoiSvVLueHjO8pfFvAzx4Iu_f" />
+        <div class="absolute inset-0 bg-secondary/10 pointer-events-none"></div>
+        <div class="absolute bottom-4 right-4">
+          <div class="bg-surface p-2 rounded-lg shadow-lg border border-secondary/20"><span
+              class="material-symbols-outlined">zoom_in</span></div>
+        </div>
+      </div>
+      <a href="https://maps.app.goo.gl/QmDQBuVJxYyvveCPA" target="_blank"
+        class="w-full flex items-center justify-center gap-3 bg-secondary text-on-secondary py-4 px-8 rounded-full font-label-caps transition active:scale-95">
+        <span class="material-symbols-outlined">directions</span> BUKA PETUNJUK ARAH
+      </a>
+      <p class="text-center mt-6 text-on-surface-variant text-sm px-4">"Barangsiapa yang diundang ke walimah maka
+        hendaklah ia menghadirinya." (HR. Muslim)</p>
+    </section>
+
+    <!-- Footer Quote -->
+    <section class="px-margin-page pb-12 text-center reveal">
+      <div class="opacity-10 mb-8"><span class="material-symbols-outlined text-6xl">yard</span></div>
+      <p class="font-serif italic text-primary/80 max-w-xs mx-auto">Kagem Bapak/Ibu/Sederek sedoyo, kehadiran
+        panjenengan sedoyo mujudaken berkah kangge mulyanipun pasangan katur sedoyo.</p>
+    </section>
+
+  </main>
+
+  <script src="nav.js"></script>
+</body>
+
+</html>
