@@ -545,7 +545,7 @@
                   <span class="material-symbols-outlined text-secondary/70">schedule</span>
                   <div>
                     <p class="font-label-caps text-label-caps text-secondary mb-1">WAKTU</p>
-                    <p class="font-title-sm text-on-surface">11:00 — 14:00 WIB</p>
+                    <p class="font-title-sm text-on-surface">08:00 WIB — Selesai</p>
                   </div>
                 </div>
                 <div class="flex gap-4">
@@ -693,9 +693,22 @@
                 <p class="font-title-sm text-sm mt-1" id="norek">00550 11527 30502 </p>
                 <p class="font-body-md text-[10px] opacity-60">A/N Elvy Nur Fauziyah</p>
               </div>
-              <button id="copy-btn" onclick="copyNorek()"
+              <button onclick="copyText('norek')"
                 class="text-secondary hover:scale-110 transition-transform p-2 rounded-lg hover:bg-secondary/10">
-                <span class="material-symbols-outlined" id="copy-icon">content_copy</span>
+                <span class="material-symbols-outlined" id="copy-icon-norek">content_copy</span>
+              </button>
+            </div>
+
+            <div
+              class="bg-surface p-4 rounded-xl flex items-center justify-between border border-secondary-container/20 shadow-sm">
+              <div class="text-left">
+                <p class="font-label-caps text-[10px] text-secondary">ALAMAT PENGIRIMAN</p>
+                <p class="font-title-sm text-sm mt-1 leading-snug" id="alamat-gift">Ds. Pagerwojo Dsn. Pagerwojo Kec. Perak Kab. Jombang RT/RW. 05/04</p>
+                <p class="font-body-md text-[10px] opacity-60">Penerima: Elvy Nur Fauziyah</p>
+              </div>
+              <button onclick="copyText('alamat-gift')"
+                class="text-secondary hover:scale-110 transition-transform p-2 rounded-lg hover:bg-secondary/10">
+                <span class="material-symbols-outlined" id="copy-icon-alamat">content_copy</span>
               </button>
             </div>
           </div>
@@ -934,13 +947,18 @@
     }
 
     /* ---- Copy norek ---- */
-    function copyNorek() {
-      var text = document.getElementById("norek").textContent.trim();
+    /* ---- Generic Copy function ---- */
+    function copyText(id) {
+      var text = document.getElementById(id).textContent.trim();
+      var iconId = id === "norek" ? "copy-icon-norek" : "copy-icon-alamat";
       navigator.clipboard.writeText(text).then(function () {
-        var icon = document.getElementById("copy-icon");
+        var icon = document.getElementById(iconId);
         icon.textContent = "done";
         icon.classList.add("copy-success");
-        setTimeout(function () { icon.textContent = "content_copy"; icon.classList.remove("copy-success"); }, 2000);
+        setTimeout(function () {
+          icon.textContent = "content_copy";
+          icon.classList.remove("copy-success");
+        }, 2000);
       });
     }
 
