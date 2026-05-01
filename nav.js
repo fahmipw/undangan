@@ -258,8 +258,8 @@
     var el = document.getElementById("countdown");
     if (!el) return;
 
-    // Wedding date: Selasa, 9 Juni 2026, 08:00 WIB (UTC+7)
-    var weddingDate = new Date("2026-06-09T08:00:00+07:00").getTime();
+    // Wedding date: Kamis, 11 Juni 2026, 11:00 WIB (UTC+7)
+    var weddingDate = new Date("2026-06-11T11:00:00+07:00").getTime();
 
     function pad(n) { return n < 10 ? "0" + n : String(n); }
 
