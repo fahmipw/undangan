@@ -13,7 +13,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'POST') {
     $body = json_decode(file_get_contents('php://input'), true);
 
-    $nama  = trim($body['nama']  ?? '');
+    $nama = trim($body['nama'] ?? '');
     $pesan = trim($body['pesan'] ?? '');
 
     if ($nama === '') {
@@ -24,11 +24,11 @@ if ($method === 'POST') {
     }
 
     // Batasi panjang
-    $nama  = mb_substr($nama,  0, 150);
+    $nama = mb_substr($nama, 0, 150);
     $pesan = mb_substr($pesan, 0, 1000);
 
     try {
-        $db   = getDB();
+        $db = getDB();
         $stmt = $db->prepare('INSERT INTO ucapan (nama, pesan) VALUES (:nama, :pesan)');
         $stmt->execute([':nama' => $nama, ':pesan' => $pesan]);
 
@@ -44,16 +44,16 @@ if ($method === 'POST') {
 
 // ---- GET: Ambil semua ucapan ----
 if ($method === 'GET') {
-    $limit  = min((int) ($_GET['limit']  ?? 20), 100);
-    $offset = max((int) ($_GET['offset'] ?? 0),  0);
+    $limit = min((int) ($_GET['limit'] ?? 20), 100);
+    $offset = max((int) ($_GET['offset'] ?? 0), 0);
 
     try {
-        $db   = getDB();
+        $db = getDB();
         $stmt = $db->prepare('SELECT id, nama, pesan, created_at FROM ucapan ORDER BY created_at DESC LIMIT :limit OFFSET :offset');
-        $stmt->bindValue(':limit',  $limit,  PDO::PARAM_INT);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
-        $rows  = $stmt->fetchAll();
+        $rows = $stmt->fetchAll();
         $total = (int) $db->query('SELECT COUNT(*) FROM ucapan')->fetchColumn();
         jsonResponse(['success' => true, 'total' => $total, 'data' => $rows]);
     } catch (PDOException $e) {

@@ -1,6 +1,6 @@
 -- ============================================
 -- Database: undangan_pernikahan
--- Fahmi & Cantika Wedding Invitation
+-- Elvy & Rokim Wedding Invitation
 -- ============================================
 
 CREATE DATABASE IF NOT EXISTS undangan_pernikahan

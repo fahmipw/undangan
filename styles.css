@@ -1,6 +1,6 @@
 /* ============================================
-   Shared Styles - Undangan Pernikahan Digital
-   Fahmi & Cantika
+   SPA Styles - Elvy ndangan Pernikahan Digital
+    & Rokim — Single Page Application
    ============================================ */
 
 /* ---------- Base ---------- */
@@ -10,9 +10,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
 body {
-  min-height: max(884px, 100dvh);
+  min-height: 100dvh;
   overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 .material-symbols-outlined {
@@ -53,70 +62,102 @@ body {
   clip-path: polygon(50% 0%, 100% 70%, 80% 100%, 20% 100%, 0% 70%);
 }
 
-/* ---------- Page Transition Overlay ---------- */
-.page-transition {
+/* =============================================
+   COVER GATE - Fullscreen Landing Overlay
+   ============================================= */
+#cover-gate {
   position: fixed;
   inset: 0;
+  z-index: 200;
   background: #fbf9f5;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.page-transition.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.transition-content {
-  position: absolute;
-  inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  transform: scale(0.9);
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#cover-gate.opened {
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.4s ease;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
-.page-transition.active .transition-content {
-  transform: scale(1);
-  opacity: 1;
+#cover-gate .cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.pulse-ring {
-  width: 60px;
-  height: 60px;
-  border: 2px solid #775a19;
-  border-radius: 9999px;
-  animation: pulseRing 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+#cover-gate .cover-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 28rem;
+  padding: 0 2rem;
 }
 
-@keyframes pulseRing {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.6;
+/* Invitation card within cover */
+.cover-card {
+  background: rgba(251, 249, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 195, 191, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(78, 52, 46, 0.15);
+  animation: floatCard 3s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+
+  0%,
+  100% {
+    transform: translateY(0);
   }
 
-  70% {
-    transform: scale(1.3);
-    opacity: 0;
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Buka Undangan button shimmer */
+.btn-buka {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-buka::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
   }
 
   100% {
-    opacity: 0;
+    left: 100%;
   }
 }
 
-/* ---------- Scroll Reveal Animations ---------- */
+/* =============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================= */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.visible {
@@ -126,14 +167,38 @@ body {
 
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.9);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal-scale.visible {
   opacity: 1;
   transform: scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Stagger children */
@@ -145,23 +210,27 @@ body {
 }
 
 .reveal-stagger.visible>*:nth-child(1) {
-  transition-delay: 0.05s;
+  transition-delay: 0.08s;
 }
 
 .reveal-stagger.visible>*:nth-child(2) {
-  transition-delay: 0.15s;
+  transition-delay: 0.18s;
 }
 
 .reveal-stagger.visible>*:nth-child(3) {
-  transition-delay: 0.25s;
+  transition-delay: 0.28s;
 }
 
 .reveal-stagger.visible>*:nth-child(4) {
-  transition-delay: 0.35s;
+  transition-delay: 0.38s;
 }
 
 .reveal-stagger.visible>*:nth-child(5) {
-  transition-delay: 0.45s;
+  transition-delay: 0.48s;
+}
+
+.reveal-stagger.visible>*:nth-child(6) {
+  transition-delay: 0.58s;
 }
 
 .reveal-stagger.visible>* {
@@ -169,160 +238,123 @@ body {
   transform: translateY(0);
 }
 
-/* ---------- Music Button Spin ---------- */
-@keyframes spinSlow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.music-btn-playing .music-spin-ring {
-  animation: spinSlow 3s linear infinite;
-}
-
-.music-btn-playing .music-icon {
-  animation: spinSlow 3s linear infinite reverse;
-}
-
-/* ---------- Bottom Nav ---------- */
-.bottom-nav {
+/* =============================================
+   DOT NAVIGATION - Fixed Right Sidebar
+   ============================================= */
+#dot-nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background: rgba(252, 251, 248, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 -4px 20px rgba(78, 52, 46, 0.08);
-  transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.bottom-nav.nav-hidden {
-  transform: translateY(100%);
-}
-
-/* Also move the music FAB with the nav */
-.music-fab {
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.music-fab.fab-hidden {
-  transform: translateY(80px);
-}
-
-.bottom-nav-inner {
-  max-width: 36rem;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 1rem;
-  height: 4rem;
-}
-
-.bottom-nav a {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0;
-  text-decoration: none;
-  color: rgba(78, 52, 46, 0.5);
-  transition: color 0.2s, transform 0.2s;
+  gap: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#dot-nav.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dot-track {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.bottom-nav a:active {
-  transform: scale(0.9);
-}
-
-.bottom-nav a:hover {
-  color: #4E342E;
-}
-
-.bottom-nav a .nav-label {
-  font-family: 'Noto Serif', serif;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-
-.bottom-nav a.active {
-  color: #D4AF37;
-  font-weight: bold;
-}
-
-.bottom-nav a.active::before {
+/* Connecting line */
+.dot-track::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  background: #D4AF37;
-  border-radius: 0 0 2px 2px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(78, 52, 46, 0.12);
+  z-index: 0;
 }
 
-.bottom-nav a.active .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-}
-
-/* ---------- Floating Music Button ---------- */
-.music-fab {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 5.5rem;
-  z-index: 60;
-}
-
-.music-fab button {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
-  background: #775a19;
-  color: #ffffff;
-  border: none;
+.dot-item {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 30px rgba(78, 52, 46, 0.25);
+  padding: 10px 0;
   cursor: pointer;
-  transition: transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dot-item .dot-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(78, 52, 46, 0.2);
+  border: 1.5px solid rgba(78, 52, 46, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: visible;
 }
 
-.music-fab button:active {
-  transform: scale(0.9);
+.dot-item.active .dot-circle {
+  width: 10px;
+  height: 10px;
+  background: #775a19;
+  border-color: #775a19;
+  box-shadow: 0 0 0 3px rgba(119, 90, 25, 0.2);
 }
 
-.music-fab .ping-ring {
+.dot-item .dot-label {
   position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  border: 2px solid #775a19;
-  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  right: 22px;
+  white-space: nowrap;
+  font-family: 'Noto Serif', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4E342E;
+  background: rgba(251, 249, 245, 0.95);
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(78, 52, 46, 0.1);
+  opacity: 0;
+  transform: translateX(8px);
   pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* ---------- Top Header ---------- */
+.dot-item:hover .dot-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =============================================
+   TOP HEADER (STICKY)
+   ============================================= */
 .top-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 90;
   background: rgba(252, 251, 248, 0.97);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s ease;
+}
+
+.top-header.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .top-header-inner {
@@ -356,7 +388,124 @@ body {
   color: #4E342E;
 }
 
-/* ---------- Countdown Styling ---------- */
+/* =============================================
+   FLOATING MUSIC BUTTON
+   ============================================= */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.music-btn-playing .music-spin-ring {
+  animation: spinSlow 3s linear infinite;
+}
+
+.music-btn-playing .music-icon {
+  animation: spinSlow 3s linear infinite reverse;
+}
+
+.music-fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.music-fab.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.music-fab button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: #775a19;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 30px rgba(78, 52, 46, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  overflow: visible;
+}
+
+.music-fab button:active {
+  transform: scale(0.9);
+}
+
+.music-fab .ping-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #775a19;
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  70% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =============================================
+   SPA SECTIONS
+   ============================================= */
+.spa-section {
+  scroll-snap-align: start;
+  min-height: 50vh;
+  position: relative;
+}
+
+.spa-section-full {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Section dividers */
+.section-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 0;
+  opacity: 0.3;
+}
+
+.section-divider .divider-line {
+  height: 1px;
+  width: 4rem;
+  background: #775a19;
+}
+
+/* =============================================
+   COUNTDOWN
+   ============================================= */
 .countdown-grid {
   display: flex;
   justify-content: center;
@@ -400,4 +549,159 @@ body {
   padding: 0 0.25rem;
   align-self: flex-start;
   padding-top: 0.5rem;
+}
+
+/* =============================================
+   RSVP / PESAN STYLES
+   ============================================= */
+.attendance-btn {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.attendance-btn.selected-hadir {
+  background: #775a19;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(119, 90, 25, 0.3);
+  transform: translateY(-2px);
+}
+
+.attendance-btn.selected-tidak {
+  background: #4e342e;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(78, 52, 46, 0.3);
+  transform: translateY(-2px);
+}
+
+.message-card {
+  animation: slideInMessage 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInMessage {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.copy-success {
+  animation: flashGreen 0.6s ease;
+}
+
+@keyframes flashGreen {
+
+  0%,
+  100% {
+    color: inherit;
+  }
+
+  50% {
+    color: #22c55e;
+  }
+}
+
+.rsvp-field {
+  position: relative;
+}
+
+.rsvp-field label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #775a19;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+.rsvp-field input,
+.rsvp-field select {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d4c3bf;
+  padding: 1.6rem 0 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.rsvp-field input:focus,
+.rsvp-field select:focus {
+  border-color: #775a19;
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* =============================================
+   SCROLL PROGRESS BAR (top of page)
+   ============================================= */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #775a19, #D4AF37);
+  width: 0%;
+  z-index: 150;
+  transition: width 0.1s linear;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#scroll-progress.active {
+  opacity: 1;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.spa-footer {
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  position: relative;
+}
+
+.spa-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(119, 90, 25, 0.3), transparent);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 400px) {
+  #dot-nav {
+    right: 0.5rem;
+  }
+
+  .dot-item .dot-circle {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot-item.active .dot-circle {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot-item {
+    padding: 8px 0;
+  }
 }
