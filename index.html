@@ -176,10 +176,10 @@
 
     <!-- Invitation Card -->
     <div
-      class="mt-section-gap relative z-10 w-full max-w-sm bg-surface/80 backdrop-blur-sm p-8 rounded-xl shadow-[0_20px_50px_rgba(78,52,46,0.15)] border border-outline-variant/30 ">
+      class="mt-section-gap relative z-10 w-full max-w-sm bg-surface/80 backdrop-blur-sm p-8 rounded-xl shadow-[0_20px_50px_rgba(78,52,46,0.15)] border border-outline-variant/30 card-3d float-3d">
 
       <div
-        class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-secondary flex items-center justify-center gunungan-shape shadow-lg">
+        class="absolute -top-6 left-1/2 -ml-6 w-12 h-12 bg-secondary flex items-center justify-center gunungan-shape shadow-lg pulse-3d">
         <span class="material-symbols-outlined text-white text-xl">temple_hindu</span>
       </div>
 
@@ -187,12 +187,13 @@
         Kepada Yth. Bapak/Ibu/Saudara/i
       </p>
 
-      <h3 class="font-headline-md text-[24px] text-primary mb-8 underline decoration-secondary/30 underline-offset-8">
+      <h3
+        class="font-headline-md text-[24px] text-primary mb-8 underline decoration-secondary/30 underline-offset-8 text-3d">
         [Nama Tamu]
       </h3>
 
       <button id="btn-buka"
-        class="w-full py-4 bg-secondary text-surface-container-lowest font-label-caps tracking-widest rounded-lg flex items-center justify-center gap-3 shadow-md hover:bg-primary transition-all active:scale-95 border-b-2 border-primary-container">
+        class="w-full py-4 bg-secondary text-surface-container-lowest font-label-caps tracking-widest rounded-lg flex items-center justify-center gap-3 shadow-md hover:bg-primary transition-all active:scale-95 border-b-2 border-primary-container btn-3d">
         BUKA UNDANGAN
         <span class="material-symbols-outlined text-[18px]">drafts</span>
       </button>
@@ -203,12 +204,23 @@
     </div>
   </div>
 
-  <!-- TOP HEADER -->
   <header class="top-header">
     <div class="top-header-inner">
-      <span class="material-symbols-outlined header-icon">park</span>
-      <h1>Elvy & Rokim</h1>
-      <span class="material-symbols-outlined header-icon">music_note</span>
+      <div class="header-left">
+        <a href="index.html" class="flex items-center justify-center">
+          <span class="material-symbols-outlined header-icon">home</span>
+        </a>
+      </div>
+      <div class="header-center">
+        <h1>Elvy & Rokim</h1>
+
+      </div>
+      <div class="header-right">
+        <button id="music-toggle" aria-label="Toggle Musik">
+          <span class="material-symbols-outlined">music_note</span>
+          <div class="ping-ring"></div>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -223,17 +235,16 @@
   <!-- MAIN CONTENT -->
   <main class="min-h-screen relative overflow-hidden pb-32">
     <!-- Background Texture -->
-    <div class="fixed inset-0 batik-parang-overlay pointer-events-none z-0"></div>
+    <div class="fixed inset-0 main-bg-overlay pointer-events-none z-0"></div>
 
     <!-- Central Content Wrapper (Fix for messy layout) -->
-    <div class="relative z-10 pt-16 max-w-xl mx-auto">
+    <div class="relative z-10 pt-16 max-w-md mx-auto">
 
-      <div id="mempelai"></div>
-      <section class="px-margin-page mb-section-gap relative z-10">
+      <section id="mempelai" class="px-margin-page mb-section-gap relative z-10 pt-24">
 
         <div class="text-center mb-12 reveal">
           <span class="font-label-caps text-label-caps text-secondary mb-2 block">MEMPELAI</span>
-          <h2 class="font-display-lg text-headline-md text-primary">Pasangan Berbahagia</h2>
+          <h2 class="font-display-lg text-headline-md text-primary text-3d">Pasangan Berbahagia</h2>
         </div>
 
         <div class="space-y-16">
@@ -241,7 +252,7 @@
           <!-- Groom -->
           <div class="relative group reveal">
             <div
-              class="aspect-[4/5] overflow-hidden rounded-xl border-[8px] border-surface-container-high shadow-lg relative">
+              class="aspect-[4/5] overflow-hidden rounded-xl border-[8px] border-surface-container-high shadow-lg relative gallery-3d">
               <img alt="Bride Portrait - Elvy Nur Fauziyah" class="w-full h-full object-cover" src="cewek.jpeg" />
               <div class="absolute inset-0 border-[1px] border-[#D4AF37]/30 pointer-events-none m-2"></div>
             </div>
@@ -249,13 +260,13 @@
 
 
             <div class="mt-6 text-center">
-              <h3 class="font-display-lg text-title-sm text-primary mb-2">Elvy Nur Fauziyah</h3>
+              <h3 class="font-display-lg text-title-sm text-primary mb-2 text-3d">Elvy Nur Fauziyah</h3>
               <p class="font-body-md text-on-surface-variant italic mb-1">Putri Pertama dari</p>
-              <p class="font-title-sm text-body-md font-semibold">Bapak Novi Harianto & Ibu Siti Masfufahh</p>
+              <p class="font-title-sm text-body-md font-semibold">Bapak M. Ma'ruf (Alm.) & Ibu Siti Masfufah</p>
             </div>
 
 
-            <div class="absolute -top-4 -right-4 w-20 h-20 opacity-20 text-secondary">
+            <div class="absolute -top-4 -right-4 w-20 h-20 opacity-20 text-secondary float-3d">
               <span class="material-symbols-outlined text-6xl">settings_heart</span>
             </div>
           </div>
@@ -269,16 +280,16 @@
           <!-- Bride -->
           <div class="relative group reveal">
             <div
-              class="aspect-[4/5] overflow-hidden rounded-xl border-[8px] border-surface-container-high shadow-lg relative">
+              class="aspect-[4/5] overflow-hidden rounded-xl border-[8px] border-surface-container-high shadow-lg relative gallery-3d">
               <img alt="Groom Portrait - Mukamat Abdul Rokim" class="w-full h-full object-cover" src="cowok.jpeg" />
               <div class="absolute inset-0 border-[1px] border-[#D4AF37]/30 pointer-events-none m-2"></div>
             </div>
             <div class="mt-6 text-center">
-              <h3 class="font-display-lg text-title-sm text-primary mb-2"> Mukamat Abdul Rokim</h3>
+              <h3 class="font-display-lg text-title-sm text-primary mb-2 text-3d"> Mukamat Abdul Rokim</h3>
               <p class="font-body-md text-on-surface-variant italic mb-1">Putra Kedua dari</p>
-              <p class="font-title-sm text-body-md font-semibold">Bapak Masngat & Ibu. Galisah</p>
+              <p class="font-title-sm text-body-md font-semibold">Bapak Basarodin (Alm.) & Ibu. Galisah</p>
             </div>
-            <div class="absolute -bottom-4 -left-4 w-20 h-20 opacity-20 text-secondary rotate-180">
+            <div class="absolute -bottom-4 -left-4 w-20 h-20 opacity-20 text-secondary rotate-180 float-3d">
               <span class="material-symbols-outlined text-6xl">settings_heart</span>
             </div>
           </div>
@@ -288,13 +299,13 @@
       <section class="py-12 reveal" id="gallery">
         <div class="text-center mb-10">
           <span class="font-label-caps text-label-caps text-secondary mb-2 block">MEMORABILIA</span>
-          <h2 class="font-headline-md text-headline-md text-primary">Galeri Prewedding</h2>
+          <h2 class="font-headline-md text-headline-md text-primary text-3d">Galeri Prewedding</h2>
           <div class="w-16 h-[2px] bg-secondary-container mx-auto mt-4"></div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal-stagger">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 reveal-stagger perspective-container">
           <!-- 1: Besar -->
           <div
-            class="col-span-2 md:col-span-2 md:row-span-2 aspect-[4/5] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-2 md:col-span-2 md:row-span-2 aspect-[4/5] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('adat.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Foto adat" src="adat.jpeg" />
@@ -306,7 +317,7 @@
 
           <!-- 2: Kanan Atas -->
           <div
-            class="col-span-1 aspect-square bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-1 aspect-square bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('cincin.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Cincin pernikahan" src="cincin.jpeg" />
@@ -318,7 +329,7 @@
 
           <!-- 3: Kanan Bawah -->
           <div
-            class="col-span-1 aspect-square bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-1 aspect-square bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('adat2.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Foto adat 2" src="adat2.jpeg" />
@@ -330,7 +341,7 @@
 
           <!-- 4: Portrait -->
           <div
-            class="col-span-1 aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-1 aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('adat3.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Foto adat 3" src="adat3.jpeg" />
@@ -342,7 +353,7 @@
 
           <!-- 5: Portrait -->
           <div
-            class="col-span-1 aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-1 aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('adat4.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Foto adat 4" src="adat4.jpeg" />
@@ -354,7 +365,7 @@
 
           <!-- 6: Buket -->
           <div
-            class="col-span-2 md:col-span-1 aspect-video md:aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-2 md:col-span-1 aspect-video md:aspect-[3/4] bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('bucket.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Buket bunga" src="bucket.jpeg" />
@@ -366,7 +377,7 @@
 
           <!-- 7: Full width landscape -->
           <div
-            class="col-span-2 md:col-span-3 aspect-video bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative"
+            class="col-span-2 md:col-span-3 aspect-video bg-surface-container overflow-hidden rounded-xl cursor-pointer group relative gallery-3d"
             onclick="openLightbox('cincin2.jpeg')">
             <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               alt="Cincin pernikahan 2" src="cincin2.jpeg" />
@@ -377,7 +388,7 @@
           </div>
         </div>
       </section>
-      <section class="px-margin-page mb-section-gap relative z-10 reveal">
+      <section class="px-margin-page mb-section-gap relative z-10 reveal" id="kisah">
 
         <div class="bg-surface-container-low p-8 rounded-xl border border-[#D4AF37]/20 relative">
 
@@ -402,7 +413,7 @@
                 <p class="font-body-md text-on-surface-variant leading-relaxed">
                   Kami bermula dari sebuah DM sederhana di Instagram. Pesan singkat yang tak disangka menjadi awal
                   perjalanan dua hati yang saling menemukan. Dari obrolan ringan setiap hari, kami belajar saling
-                  mengenal, memahami, hingga tumbuh rasa nyaman yang perlahan berubah menjadi cinta
+                  mengenal, memahami, hingga tumbuh rasa nyaman yang perlahan berubah menjadi cinta.
 
                 </p>
               </div>
@@ -437,30 +448,35 @@
 
           </div>
 
-          <div class="mt-12 text-center">
-            <div class="inline-block p-6 border border-[#D4AF37]/30 rounded-xl bg-surface shadow-sm max-w-sm mx-auto">
-              <p class="font-serif text-lg leading-relaxed text-secondary mb-3" dir="rtl" lang="ar">
-                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ
-                بَيْنَكُم
-                مَّوَدَّةً وَرَحْمَةً
-              </p>
-              <p class="font-body-md text-sm italic text-on-surface-variant leading-relaxed">
-                "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu
-                sendiri
-                supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan
-                sayang."
-              </p>
-              <p class="font-label-caps text-[10px] text-secondary mt-3 tracking-widest">
-                QS. AR-RUM : 21
-              </p>
-            </div>
-          </div>
-
         </div>
       </section>
 
-      <div id="acara" class="pt-16"></div>
-      <section class="px-margin-page pt-12 pb-8 text-center reveal">
+      <!-- QUOTES SECTION -->
+      <section id="quotes" class="py-12 reveal">
+        <div class="text-center mb-10">
+          <span class="font-label-caps text-label-caps text-secondary mb-2 block">QUOTES</span>
+        </div>
+        <div class="mt-4 text-center">
+          <div class="inline-block p-6 border border-[#D4AF37]/30 rounded-xl bg-surface shadow-sm max-w-sm mx-auto">
+            <p class="font-serif text-lg leading-relaxed text-secondary mb-3" dir="rtl" lang="ar">
+              وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ
+              بَيْنَكُم
+              مَّوَدَّةً وَرَحْمَةً
+            </p>
+            <p class="font-body-md text-sm italic text-on-surface-variant leading-relaxed">
+              "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu
+              sendiri
+              supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan
+              sayang."
+            </p>
+            <p class="font-label-caps text-[10px] text-secondary mt-3 tracking-widest">
+              QS. AR-RUM : 21
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="acara" class="px-margin-page pt-28 pb-8 text-center reveal">
         <div class="inline-block px-4 py-1 border-b border-secondary/30 mb-4">
           <p class="font-label-caps text-label-caps text-secondary uppercase">The Holy Union</p>
         </div>
@@ -473,7 +489,7 @@
       </section>
       <section class="px-margin-page mb-section-gap reveal-scale">
         <div
-          class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 text-center relative overflow-hidden">
+          class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 text-center relative overflow-hidden card-3d">
           <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
             style="background-image:radial-gradient(circle at 2px 2px,#775a19 1px,transparent 0);background-size:24px 24px;">
           </div>
@@ -486,12 +502,12 @@
           <div
             class="absolute -inset-1 bg-gradient-to-r from-secondary/10 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
           </div>
-          <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden">
+          <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden card-3d">
             <div class="h-2 bg-secondary"></div>
             <div class="p-8">
               <div class="flex items-center gap-3 mb-6">
                 <span class="material-symbols-outlined text-secondary text-3xl">auto_awesome</span>
-                <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest">Akad Nikah</h3>
+                <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest text-3d">Akad Nikah</h3>
               </div>
               <div class="space-y-6 reveal-stagger">
                 <div class="flex gap-4">
@@ -527,12 +543,12 @@
           <div
             class="absolute -inset-1 bg-gradient-to-r from-secondary/10 to-transparent rounded-xl blur opacity-25 group-hover:opacity-50 transition">
           </div>
-          <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden">
+          <div class="relative bg-surface border border-outline-variant/40 rounded-xl overflow-hidden card-3d">
             <div class="h-2 bg-primary"></div>
             <div class="p-8">
               <div class="flex items-center gap-3 mb-6">
                 <span class="material-symbols-outlined text-secondary text-3xl">celebration</span>
-                <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest">Resepsi</h3>
+                <h3 class="font-title-sm text-title-sm text-primary uppercase tracking-widest text-3d">Resepsi</h3>
               </div>
               <div class="space-y-6 reveal-stagger">
                 <div class="flex gap-4">
@@ -573,10 +589,10 @@
               src="https://www.freepnglogos.com/uploads/lokasi-logo-png/lokasi-logo-red-map-location-icon-map-png-0.png"
               alt="Lokasi Icon" class="w-full h-full object-contain" />
           </div>
-          <p class="font-label-caps text-[10px] text-secondary tracking-widest">TAP UNTUK BUKA GOOGLE MAPS</p>
+
         </div>
         <a href="https://maps.app.goo.gl/GqgJsPwwrGwJ4vLd6" target="_blank"
-          class="w-full flex items-center justify-center gap-3 bg-secondary text-on-secondary py-4 px-8 rounded-full font-label-caps transition active:scale-95">
+          class="w-full flex items-center justify-center gap-3 bg-secondary text-on-secondary py-4 px-8 rounded-full font-label-caps transition active:scale-95 btn-3d">
           <span class="material-symbols-outlined">directions</span> BUKA PETUNJUK ARAH
         </a>
         <p class="text-center mt-6 text-on-surface-variant text-sm px-4">"Barangsiapa yang diundang ke walimah maka
@@ -588,9 +604,7 @@
           panjenengan sedoyo mujudaken berkah kangge mulyanipun pasangan katur sedoyo.</p>
       </section>
 
-      <div id="rsvp" class="pt-16"></div>
-      <div id="ucapan"></div>
-      <section class="mb-10 reveal" id="rsvp">
+      <section id="rsvp" class="mb-10 reveal pt-24">
 
         <!-- Header -->
         <div class="text-center mb-8">
@@ -617,7 +631,7 @@
             <!-- Name field -->
             <div class="rsvp-field mb-8">
               <label>NAMA LENGKAP</label>
-              <input id="rsvp-name" type="text" placeholder=" " autocomplete="name" />
+              <input id="rsvp-name" type="text" placeholder="Masukkan nama lengkap Anda" autocomplete="name" />
               <div
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-secondary to-[#D4AF37] scale-x-0 origin-left transition-transform duration-300"
                 id="rsvp-name-line"></div>
@@ -645,13 +659,13 @@
               <p class="font-label-caps text-[10px] text-secondary mb-4 tracking-widest">STATUS KEHADIRAN</p>
               <div class="grid grid-cols-2 gap-3">
                 <button id="btn-hadir" type="button"
-                  class="attendance-btn flex items-center justify-center gap-2 py-4 rounded-2xl border-2 border-secondary text-secondary font-label-caps tracking-wider"
+                  class="attendance-btn flex items-center justify-center gap-2 py-4 rounded-2xl border-2 border-secondary text-secondary font-label-caps tracking-wider btn-3d"
                   onclick="selectAttendance('hadir')">
                   <span class="material-symbols-outlined text-xl">done_all</span>
                   HADIR
                 </button>
                 <button id="btn-tidak" type="button"
-                  class="attendance-btn flex items-center justify-center gap-2 py-4 rounded-2xl border-2 border-outline-variant text-on-surface-variant font-label-caps tracking-wider"
+                  class="attendance-btn flex items-center justify-center gap-2 py-4 rounded-2xl border-2 border-outline-variant text-on-surface-variant font-label-caps tracking-wider btn-3d"
                   onclick="selectAttendance('tidak')">
                   <span class="material-symbols-outlined text-xl">close</span>
                   TIDAK HADIR
@@ -672,7 +686,7 @@
 
             <!-- Send button -->
             <button id="btn-kirim-rsvp" type="button" onclick="kirimRSVP()"
-              class="w-full bg-gradient-to-r from-secondary to-[#5a4010] text-white py-5 rounded-2xl font-label-caps tracking-widest shadow-lg shadow-secondary/30 flex justify-center items-center gap-3 active:scale-95 transition-transform">
+              class="w-full bg-gradient-to-r from-secondary to-[#5a4010] text-white py-5 rounded-2xl font-label-caps tracking-widest shadow-lg shadow-secondary/30 flex justify-center items-center gap-3 active:scale-95 transition-transform btn-3d">
               <span class="material-symbols-outlined"></span>
               KIRIM KONFIRMASI
             </button>
@@ -687,14 +701,14 @@
       <section class="py-4 mb-6 text-center reveal" id="gift">
         <div class="bg-surface-container-highest/50 p-8 rounded-3xl border-dashed border-2 border-outline-variant/30">
           <span class="material-symbols-outlined text-secondary text-4xl mb-3">featured_seasonal_and_gifts</span>
-          <h3 class="font-title-sm text-primary mb-2">Tanda Kasih</h3>
+          <h3 class="font-title-sm text-primary mb-2">Gift</h3>
           <p class="font-body-md text-on-surface-variant mb-6 text-sm">Doa restu Anda adalah hadiah terindah, namun jika
             ingin memberi lebih:</p>
           <div class="flex flex-col gap-4 max-w-xs mx-auto">
             <div
               class="bg-surface p-4 rounded-xl flex items-center justify-between border border-secondary-container/20 shadow-sm">
               <div class="text-left">
-                <p class="font-label-caps text-[10px] text-secondary">BANK BRI</p>
+                <img src="BANK_BRI.png" alt="BANK BRI" class="h-8 mb-2">
                 <p class="font-title-sm text-sm mt-1" id="norek">00550 11527 30502 </p>
                 <p class="font-body-md text-[10px] opacity-60">A/N Elvy Nur Fauziyah</p>
               </div>
@@ -714,12 +728,8 @@
               </div>
               <div class="flex items-center gap-1">
                 <a href="https://maps.app.goo.gl/GqgJsPwwrGwJ4vLd6" target="_blank"
-                  class="flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-2 rounded-lg hover:bg-secondary/20 transition active:scale-95 text-[10px] font-label-caps"
-                  title="Buka di Google Maps">
-                  <img
-                    src="https://www.freepnglogos.com/uploads/lokasi-logo-png/lokasi-logo-red-map-location-icon-map-png-0.png"
-                    alt="Maps" class="w-4 h-4 object-contain" />
-                  BUKA MAPS
+                  class="text-secondary transition active:scale-110 p-2" title="Buka di Google Maps">
+                  <span class="material-symbols-outlined text-2xl">location_on</span>
                 </a>
               </div>
             </div>
@@ -739,7 +749,7 @@
           <!-- Name input -->
           <div class="rsvp-field mb-6">
             <label>NAMA ANDA</label>
-            <input id="guest-name" type="text" placeholder=" " autocomplete="name" />
+            <input id="guest-name" type="text" placeholder="Masukkan nama Anda" autocomplete="name" />
           </div>
 
           <!-- Message textarea -->
@@ -755,7 +765,7 @@
 
           <!-- Send button -->
           <button onclick="kirimUcapan()"
-            class="w-full bg-secondary text-on-secondary px-6 py-3 rounded-full font-label-caps tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md shadow-secondary/20">
+            class="w-full bg-secondary text-on-secondary px-6 py-3 rounded-full font-label-caps tracking-widest flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-md shadow-secondary/20 btn-3d">
             <span class="material-symbols-outlined text-base">send</span>
             KIRIM UCAPAN
           </button>
@@ -815,16 +825,18 @@
           </div>
         </div>
       </section>
+      <footer class="spa-footer">
+        <div class="font-label-caps text-[10px] text-secondary tracking-[0.2em] opacity-80">
+          &copy; 2026 Elvy & Rokim. All Rights Reserved.
+        </div>
+        <div class="mt-2 font-body-md text-[9px] text-on-surface-variant opacity-60">
+          Design by <a href="https://instagram.com/fahmiprdn16" target="_blank"
+            class="font-semibold hover:text-secondary transition-colors">fahmiprdn16</a>
+        </div>
+      </footer>
     </div>
   </main>
 
-  <!-- FLOATING MUSIC BUTTON -->
-  <div class="music-fab">
-    <button id="music-toggle" aria-label="Toggle Musik">
-      <span class="material-symbols-outlined">music_note</span>
-      <div class="ping-ring"></div>
-    </button>
-  </div>
 
   <!-- Lightbox Modal -->
   <div id="lightbox"
@@ -937,7 +949,9 @@
           btn.innerHTML = '<span class="material-symbols-outlined">whatsapp</span> KIRIM KONFIRMASI';
           if (data.success) {
             var statusTxt = attendance === "hadir" ? "HADIR ✅" : "TIDAK HADIR ❌";
-            var msg = "Halo, saya *" + name + "* ingin mengkonfirmasi kehadiran saya.\n\n"
+            var msg = "Assalamu’alaikum Wr. Wb.\n\n"
+              + "Saya *" + name + "* mengucapkan terima kasih atas undangannya.\n"
+              + "Dengan ini saya ingin menyampaikan konfirmasi kehadiran saya:\n\n"
               + "Status : " + statusTxt;
             if (attendance === "hadir") msg += "\nJumlah Tamu : " + count + " orang";
             if (alasan) msg += "\nAlasan : " + alasan;

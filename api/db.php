@@ -7,6 +7,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');       // Ganti sesuai user MySQL XAMPP Anda
 define('DB_PASS', '');           // Ganti sesuai password MySQL Anda
 define('DB_NAME', 'undangan_pernikahan');
+define('INVITATION_ID', 1); // ID untuk Elvy & Rokim
 
 function getDB(): PDO {
     static $pdo = null;

@@ -33,9 +33,10 @@ if ($method === 'POST') {
 
     try {
         $db  = getDB();
-        $sql = 'INSERT INTO rsvp (nama, jumlah_tamu, status, alasan) VALUES (:nama, :jumlah, :status, :alasan)';
+        $sql = 'INSERT INTO rsvp (invitation_id, nama, jumlah_tamu, status, alasan) VALUES (:invitation_id, :nama, :jumlah, :status, :alasan)';
         $stmt = $db->prepare($sql);
         $stmt->execute([
+            ':invitation_id' => INVITATION_ID,
             ':nama'   => $nama,
             ':jumlah' => $jumlah_tamu,
             ':status' => $status,
@@ -55,7 +56,9 @@ if ($method === 'POST') {
 if ($method === 'GET') {
     try {
         $db   = getDB();
-        $rows = $db->query('SELECT id, nama, jumlah_tamu, status, created_at FROM rsvp ORDER BY created_at DESC')->fetchAll();
+        $stmt = $db->prepare('SELECT id, nama, jumlah_tamu, status, created_at FROM rsvp WHERE invitation_id = :invitation_id ORDER BY created_at DESC');
+        $stmt->execute([':invitation_id' => INVITATION_ID]);
+        $rows = $stmt->fetchAll();
         jsonResponse(['success' => true, 'data' => $rows]);
     } catch (PDOException $e) {
         jsonResponse(['success' => false, 'message' => $e->getMessage()], 500);

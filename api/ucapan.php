@@ -29,8 +29,12 @@ if ($method === 'POST') {
 
     try {
         $db = getDB();
-        $stmt = $db->prepare('INSERT INTO ucapan (nama, pesan) VALUES (:nama, :pesan)');
-        $stmt->execute([':nama' => $nama, ':pesan' => $pesan]);
+        $stmt = $db->prepare('INSERT INTO ucapan (invitation_id, nama, pesan) VALUES (:invitation_id, :nama, :pesan)');
+        $stmt->execute([
+            ':invitation_id' => INVITATION_ID,
+            ':nama' => $nama,
+            ':pesan' => $pesan
+        ]);
 
         $id = (int) $db->lastInsertId();
 
@@ -49,12 +53,16 @@ if ($method === 'GET') {
 
     try {
         $db = getDB();
-        $stmt = $db->prepare('SELECT id, nama, pesan, created_at FROM ucapan ORDER BY created_at DESC LIMIT :limit OFFSET :offset');
+        $stmt = $db->prepare('SELECT id, nama, pesan, created_at FROM ucapan WHERE invitation_id = :invitation_id ORDER BY created_at DESC LIMIT :limit OFFSET :offset');
+        $stmt->bindValue(':invitation_id', INVITATION_ID, PDO::PARAM_INT);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetchAll();
-        $total = (int) $db->query('SELECT COUNT(*) FROM ucapan')->fetchColumn();
+
+        $stmtCount = $db->prepare('SELECT COUNT(*) FROM ucapan WHERE invitation_id = :invitation_id');
+        $stmtCount->execute([':invitation_id' => INVITATION_ID]);
+        $total = (int) $stmtCount->fetchColumn();
         jsonResponse(['success' => true, 'total' => $total, 'data' => $rows]);
     } catch (PDOException $e) {
         jsonResponse(['success' => false, 'message' => $e->getMessage()], 500);

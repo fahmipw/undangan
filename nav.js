@@ -26,16 +26,14 @@
         gate.classList.add("opened");
         document.body.classList.remove("no-scroll");
 
-        // Show header, dot nav, music fab, scroll progress
+        // Show header, dot nav, scroll progress
         setTimeout(function () {
           var header = document.querySelector(".top-header");
           var dotNav = document.getElementById("dot-nav");
-          var musicFab = document.querySelector(".music-fab");
           var scrollProg = document.getElementById("scroll-progress");
 
           if (header) header.classList.add("visible");
           if (dotNav) dotNav.classList.add("active");
-          if (musicFab) musicFab.classList.add("active");
           if (scrollProg) scrollProg.classList.add("active");
 
           // Start music
@@ -98,11 +96,11 @@
     var ping = btn.querySelector(".ping-ring");
     if (isPlaying) {
       icon.textContent = "pause";
-      if (ping) ping.style.display = "none";
+      if (ping) ping.style.display = "block";
       btn.style.animation = "spinSlow 3s linear infinite";
     } else {
       icon.textContent = "music_note";
-      if (ping) ping.style.display = "";
+      if (ping) ping.style.display = "none";
       btn.style.animation = "none";
     }
   }
@@ -125,13 +123,18 @@
   /* =============================================
      DOT NAVIGATION
      ============================================= */
+  /* =============================================
+     DOT NAVIGATION WITH ICONS
+     ============================================= */
   var DOT_SECTIONS = [
-    { id: "mempelai", label: "Mempelai" },
-    { id: "kisah", label: "Kisah" },
-    { id: "galeri", label: "Galeri" },
-    { id: "acara", label: "Acara" },
-    { id: "rsvp", label: "RSVP" },
-    { id: "ucapan", label: "Ucapan" }
+    { id: "mempelai", label: "Mempelai", icon: "favorite" },
+    { id: "gallery", label: "Galeri", icon: "photo_library" },
+    { id: "kisah", label: "Kisah", icon: "auto_stories" },
+    { id: "quotes", label: "Quotes", icon: "format_quote" },
+    { id: "acara", label: "Acara", icon: "event" },
+    { id: "rsvp", label: "RSVP", icon: "how_to_reg" },
+    { id: "gift", label: "Gift", icon: "featured_seasonal_and_gifts" },
+    { id: "guestbook", label: "Ucapan", icon: "chat" }
   ];
 
   function buildDotNav() {
@@ -146,14 +149,15 @@
       item.className = "dot-item";
       item.dataset.target = sec.id;
 
-      var circle = document.createElement("div");
-      circle.className = "dot-circle";
+      var icon = document.createElement("span");
+      icon.className = "material-symbols-outlined dot-icon";
+      icon.textContent = sec.icon;
 
       var label = document.createElement("span");
       label.className = "dot-label";
       label.textContent = sec.label;
 
-      item.appendChild(circle);
+      item.appendChild(icon);
       item.appendChild(label);
 
       item.addEventListener("click", function () {
@@ -169,6 +173,20 @@
     nav.appendChild(track);
   }
 
+  function initHeaderMenu() {
+    var menuItems = document.querySelectorAll(".header-menu a");
+    menuItems.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        var targetId = this.getAttribute("href").substring(1);
+        var target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  }
+
   function initDotObserver() {
     var dots = document.querySelectorAll(".dot-item");
     if (!dots.length) return;
@@ -182,11 +200,13 @@
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
+          // Detect when a section is sufficiently visible in the middle of the screen
           if (entry.isIntersecting) {
             var id = entry.target.id;
             if (currentActive === id) return;
             currentActive = id;
 
+            // Update dots
             dots.forEach(function (dot) {
               if (dot.dataset.target === id) {
                 dot.classList.add("active");
@@ -194,12 +214,23 @@
                 dot.classList.remove("active");
               }
             });
+
+            // Update header menu (if any)
+            var menuItems = document.querySelectorAll(".header-menu a");
+            menuItems.forEach(function (item) {
+              if (item.dataset.section === id) {
+                item.classList.add("active");
+              } else {
+                item.classList.remove("active");
+              }
+            });
           }
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: "-20% 0px -60% 0px"
+        // Observe when the section crosses the 40% - 60% viewport area
+        threshold: [0, 0.1, 0.2, 0.3],
+        rootMargin: "-30% 0px -40% 0px"
       }
     );
 
@@ -315,11 +346,22 @@
   }
 
   /* =============================================
+     SCROLL TO TOP ON PAGE LOAD/REFRESH
+     ============================================= */
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* =============================================
      INIT
      ============================================= */
   document.addEventListener("DOMContentLoaded", function () {
+    // Scroll to top on page load/refresh
+    scrollToTop();
+
     initCoverGate();
     buildDotNav();
+    initHeaderMenu();
     initMusicToggle();
     initCountdown();
     initScrollProgress();
